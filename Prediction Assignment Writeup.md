@@ -138,3 +138,10 @@ plot(modFit$finalModel, uniform=TRUE)
 
 ´´´
 
+
+![image](https://cloud.githubusercontent.com/assets/10254577/5515968/670a0492-8884-11e4-9b6b-09f657c46495.png)
+
+![image](https://cloud.githubusercontent.com/assets/10254577/5515972/869e0650-8884-11e4-9670-fd4dbb7b402c.png)
+
+![image](https://cloud.githubusercontent.com/assets/10254577/5515973/a2583ee2-8884-11e4-9f80-c9887f120b74.png)
+
