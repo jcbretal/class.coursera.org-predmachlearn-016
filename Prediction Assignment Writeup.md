@@ -1,7 +1,9 @@
 class.coursera.org-predmachlearn-016
 ====================================
 
-Practical Machine Learning
+# Practical Machine Learning
+## Prediction Assignment Writeup
+This is my analisys and solution to the problem. The `pml-testing.csv´ dont have all the columns and then i toke the option of remove all the "unused" columns. The train is SLOW but very accurate.
 
 ```
 #load data
