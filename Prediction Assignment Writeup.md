@@ -3,7 +3,7 @@ class.coursera.org-predmachlearn-016
 
 Practical Machine Learning
 
-
+```
 #load data
 
 library(caret)
@@ -133,5 +133,5 @@ plot(vars)
 plot(modFit)
 plot(modFit$finalModel, uniform=TRUE)
 
-
+´´´
 
