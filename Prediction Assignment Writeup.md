@@ -131,6 +131,7 @@ _____________________________________
 vars <- varImp(modFit)
 plot(vars)
 
+
 # grafical model fiting
 plot(modFit)
 plot(modFit$finalModel, uniform=TRUE)
