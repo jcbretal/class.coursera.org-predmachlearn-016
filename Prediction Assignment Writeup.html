@@ -23,7 +23,6 @@ testing <- subset(test,select=-c(X,user_name,raw_timestamp_part_1,raw_timestamp_
 
 
 #visualization
-
 dim(datos)
 names(datos)
 str(datos)
@@ -36,7 +35,6 @@ nzvTest <- nearZeroVar(testing)
 nzvTest %in% nzvTrain
 
 filteredTraining <- training[, -nzvTest]# removing unused columns
-
 dim(filteredTraining)
 
 set.seed(2)
