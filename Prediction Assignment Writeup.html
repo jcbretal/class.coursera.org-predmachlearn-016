@@ -1,15 +1,19 @@
 <html>
 <h2>Practical Machine Learning</h2>
 <h4>Prediction Assignment Writeup</h4>
+<p>This is my analisys and solution to the problem. 
+The Random Forest method is the best for this large dataset with too many predictors. 
+Its necesary aplly a preprocesing. 
+The `pml-testing.csv´ dont have all the columns and then i toke the option of remove all the "unused" columns. 
+The train is SLOW but very accurate. See Confusion Matrix a validation at the bottom of this file.</p>
 <pre>
+
 #load data
 
 library(caret)
 library(doMC)
 registerDoMC(cores = 2)
 set.seed(2)
-
-
 
 datos = read.csv("~/Descargas/pml-training.csv")
 training <- subset(datos,select=-c(X,user_name,raw_timestamp_part_1,raw_timestamp_part_2,cvtd_timestamp))
