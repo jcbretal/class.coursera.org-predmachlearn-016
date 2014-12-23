@@ -17,8 +17,8 @@ The Random Forest method is the best for this large dataset with too many predic
 Its necesary aplly a preprocesing. 
 The `pml-testing.csv´ dont have all the columns and then i toke the option of remove all the "unused" columns. 
 The train is SLOW but very accurate. See Confusion Matrix a validation at the bottom of this file.</p>
+<hr>
 <pre>
-
 #load data and libraries
 library(caret)
 library(doMC)
@@ -30,14 +30,6 @@ training <- subset(datos,select=-c(X,user_name,raw_timestamp_part_1,raw_timestam
 
 test <- read.csv("~/Descargas/pml-testing.csv")
 testing <- subset(test,select=-c(X,user_name,raw_timestamp_part_1,raw_timestamp_part_2,cvtd_timestamp,problem_id))
-
-
-#visualization
-dim(datos)
-names(datos)
-str(datos)
-plot(datos$classe ~ . , data=datos)
-
 
 # comparative of unused columns training vs test set
 nzvTrain <- nearZeroVar(training)
@@ -58,8 +50,6 @@ testFit = filteredTraining[-inTrain,]
 modFit <- train(trainFit$classe ~ . ,method="rf", allowParallel=TRUE ,data=trainFit , preProcess = c("center", "scale"))
 print(modFit$finalModel)
 
-____________________________________
-
 Call:
  randomForest(x = x, y = y, mtry = param$mtry, allowParallel = TRUE) 
                Type of random forest: classification
@@ -76,19 +66,21 @@ D    0    0   13 1915    2 0.0077720207
 E    0    0    0    6 2159 0.0027713626
 
 </pre>
+<hr>
 <p>Its a very good acuracy. This will be my prediction for the test set in file pml-testing.csv.</p>
+<hr>
 <pre>
 filteredTest <- testing[, -nzvTest]# removing unused columns
 filteredTest["classe"] <- filteredTraining[dim(filteredTraining)[2]]# adding classe column
 
-# prediction over the test set
+# prediction over the test set pml-testing.csv
 prediction <- predict(modFit, newdata=filteredTest)
 
-____________________________________
+______________________________________________
 prediction
  [1] B A B A A E D B A A B C B A E E A B B B
 Levels: A B C D E
-____________________________________
+______________________________________________
 
 
 
@@ -130,9 +122,9 @@ Detection Rate         0.2845   0.1922   0.1730   0.1628   0.1829
 Detection Prevalence   0.2855   0.1936   0.1744   0.1637   0.1829
 Balanced Accuracy      0.9993   0.9958   0.9951   0.9960   0.9976
 
-_____________________________________
 
 </pre>
+<hr>
 <p>Conclusion: the Random Forest with preprocesing its the more accurate method, but with the 60% of the trainingset
 tooks too many to do it daily, may be other way to do it faster.</p>
 
@@ -143,6 +135,6 @@ tooks too many to do it daily, may be other way to do it faster.</p>
 <img width="90%" src="https://cloud.githubusercontent.com/assets/10254577/5515973/a2583ee2-8884-11e4-9f80-c9887f120b74.png">
 </p>
 
-
+</body>
 </html>
 
