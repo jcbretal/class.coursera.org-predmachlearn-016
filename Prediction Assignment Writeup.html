@@ -10,6 +10,7 @@
   </head>
 
   <body>
+  <section id="main_content" class="inner">
 <h2>Practical Machine Learning</h2>
 <h4>Prediction Assignment Writeup</h4>
 <p>This is my analisys and solution to the problem. 
@@ -26,10 +27,19 @@ registerDoMC(cores = 2)
 set.seed(2)
 
 datos = read.csv("~/Descargas/pml-training.csv")
-training <- subset(datos,select=-c(X,user_name,raw_timestamp_part_1,raw_timestamp_part_2,cvtd_timestamp))
+training <- subset(datos,select=-c(X,
+                                user_name,
+                                raw_timestamp_part_1,
+                                raw_timestamp_part_2,
+                                cvtd_timestamp))
 
 test <- read.csv("~/Descargas/pml-testing.csv")
-testing <- subset(test,select=-c(X,user_name,raw_timestamp_part_1,raw_timestamp_part_2,cvtd_timestamp,problem_id))
+testing <- subset(test,select=-c(X,
+                                user_name,
+                                raw_timestamp_part_1,
+                                raw_timestamp_part_2,
+                                cvtd_timestamp,
+                                problem_id))
 
 # comparative of unused columns training vs test set
 nzvTrain <- nearZeroVar(training)
@@ -47,7 +57,10 @@ trainFit = filteredTraining[ inTrain,]
 testFit = filteredTraining[-inTrain,]
 
 # fit to random forest with preprocessing
-modFit <- train(trainFit$classe ~ . ,method="rf", allowParallel=TRUE ,data=trainFit , preProcess = c("center", "scale"))
+modFit <- train( trainFit$classe ~ . ,method="rf", 
+                  allowParallel=TRUE ,
+                  data=trainFit , 
+                  preProcess = c("center", "scale"))
 print(modFit$finalModel)
 
 Call:
@@ -71,7 +84,8 @@ E    0    0    0    6 2159 0.0027713626
 <hr>
 <pre>
 filteredTest <- testing[, -nzvTest]# removing unused columns
-filteredTest["classe"] <- filteredTraining[dim(filteredTraining)[2]]# adding classe column
+# adding classe column
+filteredTest["classe"] <- filteredTraining[dim(filteredTraining)[2]]
 
 # prediction over the test set pml-testing.csv
 prediction <- predict(modFit, newdata=filteredTest)
@@ -129,9 +143,8 @@ Balanced Accuracy      0.9993   0.9958   0.9951   0.9960   0.9976
 <hr>
 <p>Conclusion: the Random Forest with preprocesing its the more accurate method, but with the 60% of the trainingset
 tooks too many to do it daily, may be other way to do it faster.</p>
-
-<p>Here some graphics generated during the work.</p>
-<p align="center">
+</section>
+<p align="center">Here some graphics generated during the work.<br>
 <img width="90%" src="https://cloud.githubusercontent.com/assets/10254577/5515968/670a0492-8884-11e4-9b6b-09f657c46495.png">
 <br>
 <img width="90%" src="https://cloud.githubusercontent.com/assets/10254577/5515972/869e0650-8884-11e4-9670-fd4dbb7b402c.png">
