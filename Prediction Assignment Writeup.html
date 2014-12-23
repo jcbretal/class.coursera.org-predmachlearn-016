@@ -81,14 +81,16 @@ prediction
  [1] B A B A A E D B A A B C B A E E A B B B
 Levels: A B C D E
 ______________________________________________
-
-
-
-# prediction over the test set partition of training set for aditional cross validation,
+<hr>
+</pre>
+<p>Prediction over the test set partition of training set for aditional cross validation (40% of training set).
+  Total accuracy of 99,5% which is a great value.
+</p>
+<pre>
+<hr>
 # to calculate accuracy and confusion matrix
 predict1 <- predict(modFit, testFit)
 cm <- confusionMatrix(predict1,testFit$classe)
-_____________________________________
 
 Confusion Matrix and Statistics
 
