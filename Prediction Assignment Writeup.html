@@ -8,8 +8,7 @@ The `pml-testing.csv´ dont have all the columns and then i toke the option of r
 The train is SLOW but very accurate. See Confusion Matrix a validation at the bottom of this file.</p>
 <pre>
 
-#load data
-
+#load data and libraries
 library(caret)
 library(doMC)
 registerDoMC(cores = 2)
@@ -82,7 +81,7 @@ ____________________________________
 
 
 
-# prediction over the test set partition of training set for aditional validation,
+# prediction over the test set partition of training set for aditional cross validation,
 # to calculate accuracy and confusion matrix
 predict1 <- predict(modFit, testFit)
 cm <- confusionMatrix(predict1,testFit$classe)
